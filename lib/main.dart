@@ -13,16 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: themeMode,
-      builder: (context, themeModeValue, child) {
+      valueListenable: colorMode,
+      builder: (BuildContext context, dynamic colormodevalue, Widget? child) {
         return ValueListenableBuilder(
-          valueListenable: colorMode,
-          builder: (context, colorModeValue, child) {
+          valueListenable: themeMode,
+          builder: (context, themeModeValue, child) {
             return MaterialApp(
               title: 'Flutter Demo',
               theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
-                  seedColor: colorModeValue,
+                  seedColor: colormodevalue,
                   brightness: themeModeValue == 'dark'
                       ? Brightness.dark
                       : Brightness.light,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:switch_theme_app/services/theme_service.dart';
 import 'package:switch_theme_app/views/colors_view.dart';
+import 'package:switch_theme_app/views/inputs_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.title});
@@ -27,6 +28,14 @@ class HomeView extends StatelessWidget {
                 ).push(MaterialPageRoute(builder: (context) => ColorsView()));
               },
               child: Text('Go to colors view'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => InputsView()));
+              },
+              child: Text('Go to inputs view'),
             ),
           ],
         ),
