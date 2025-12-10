@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:switch_theme_app/widgets/text_field.dart';
 
 class InputsView extends StatefulWidget {
   const InputsView({super.key});
@@ -8,101 +10,188 @@ class InputsView extends StatefulWidget {
 }
 
 class _InputsViewState extends State<InputsView> {
-  bool? checkboxValue = false;
-  bool switchValue = false;
+  bool envioValue = false;
+  bool visibleValue = false;
   double sliderValue = 0;
 
   final textCtrl = TextEditingController();
+  final nameCtrl = TextEditingController();
+  final descrCtrl = TextEditingController();
+  final priceCtrl = TextEditingController();
+  final stockCtrl = TextEditingController();
+  final cateCtrl = TextEditingController();
+  List categoria = [
+    "Escritorio",
+    "Laptop",
+    "Accesorio",
+    "Periferico",
+    "Material",
+  ];
+  final provCtrl = TextEditingController();
+  final imgCtrl = TextEditingController();
+  final imageUrlCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Inputs View'),
+        title: Text('Ingreso de productos'),
       ),
-      body: Column(
-        // text field
-        children: [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: TextField(
-              controller: textCtrl,
-              obscureText: true,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                label: Text('Name'),
-                border: OutlineInputBorder(),
-                focusColor: Theme.of(context).colorScheme.inversePrimary,
-                helperText: "It's necesary your full name",
-                hintText: 'John Doe',
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            //nombre
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                controller: nameCtrl,
+                obscureText: false,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  label: Text('Nombre'),
+                  border: OutlineInputBorder(),
+                  focusColor: Theme.of(context).colorScheme.inversePrimary,
+
+                  hintText: 'Laptop - Telefono - Audifonos - tintas - mouse',
+                ),
               ),
             ),
-          ),
 
-          // checkbox
-          Checkbox(
-            value: checkboxValue,
-            onChanged: (value) {
-              setState(() {
-                checkboxValue = value;
-              });
-            },
-          ),
-          CheckboxListTile(
-            value: checkboxValue,
-            title: Text('Check me'),
-            onChanged: (value) {
-              setState(() {
-                checkboxValue = value;
-              });
-            },
-          ),
-          Switch(
-            value: switchValue,
-            onChanged: (value) {
-              setState(() {
-                switchValue = !switchValue;
-              });
-            },
-          ),
-          SwitchListTile(
-            value: switchValue,
-            title: Text('Switch me'),
-            onChanged: (value) {
-              setState(() {
-                switchValue = !switchValue;
-              });
-            },
-          ),
-          Slider(
-            value: sliderValue,
-            min: 0,
-            max: 0.5,
-            label: "Slide me",
+            //descripcion
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: TextField(
+                controller: descrCtrl,
+                obscureText: false,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  label: Text('Descripción'),
+                  border: OutlineInputBorder(),
+                  focusColor: Theme.of(context).colorScheme.inversePrimary,
+                  hintText: 'Especificaciones',
+                ),
+              ),
+            ),
 
-            onChanged: (value) {
-              setState(() {
-                sliderValue = value;
-                print(value);
-              });
-            },
-          ),
-          SizedBox(height: 50),
-          ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
-          FilledButton(onPressed: () {}, child: Text("Filled Button")),
-          TextButton(onPressed: () {}, child: Text('Text Button')),
-          OutlinedButton(
-            onPressed: () {
-              print(
-                "${textCtrl.text} $checkboxValue $sliderValue $switchValue",
-              );
-            },
-            child: Text('Outline Button'),
-          ),
-          CloseButton(),
-          BackButton(),
-        ],
+            //ingreso y precio
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: stockCtrl,
+                      obscureText: false,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        label: Text('Ingreso'),
+                        border: OutlineInputBorder(),
+                        focusColor: Theme.of(
+                          context,
+                        ).colorScheme.inversePrimary,
+                        hintText: 'Cantidad a ingresar',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      controller: priceCtrl,
+                      obscureText: false,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        label: Text('Precio'),
+                        border: OutlineInputBorder(),
+                        focusColor: Theme.of(
+                          context,
+                        ).colorScheme.inversePrimary,
+                        hintText: '20.00',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            //categoria - proveedor
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: cateCtrl,
+                      obscureText: false,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        label: Text('Categoria'),
+                        border: OutlineInputBorder(),
+                        focusColor: Theme.of(
+                          context,
+                        ).colorScheme.inversePrimary,
+                        hintText:
+                            'Escritorio, Laptop, Accesorio, Periferico, sMaterial',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      controller: provCtrl,
+                      obscureText: false,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        label: Text('Proveedor'),
+                        border: OutlineInputBorder(),
+                        focusColor: Theme.of(
+                          context,
+                        ).colorScheme.inversePrimary,
+                        hintText: 'Entidad que provee el producto',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            //Imagen URL
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                controller: imgCtrl,
+                obscureText: false,
+                keyboardType: TextInputType.url,
+                decoration: InputDecoration(
+                  label: Text('URL Imagen'),
+                  border: OutlineInputBorder(),
+                  focusColor: Theme.of(context).colorScheme.inversePrimary,
+                  hintText: 'DIreccion de la Imagen',
+                ),
+              ),
+            ),
+
+            SwitchListTile(
+              title: Text('Disponible para envio'),
+              value: envioValue,
+              onChanged: (value) {
+                setState(() => envioValue = value);
+              },
+            ),
+
+            SwitchListTile(
+              title: Text('Producto visible en la tienda'),
+              value: visibleValue,
+              onChanged: (value) {
+                setState(() => visibleValue = value);
+              },
+            ),
+            ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
+            FilledButton(onPressed: () {}, child: Text("Filled Button")),
+            TextButton(onPressed: () {}, child: Text('Text Button')),
+            //CloseButton(),
+            BackButton(),
+          ],
+        ),
       ),
     );
   }
