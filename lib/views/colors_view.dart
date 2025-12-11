@@ -14,7 +14,7 @@ class ColorsView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomsTile(color: Colors.red),
+            CustomsTile(color: Colors.grey),
             CustomsTile(color: Colors.cyan),
             CustomsTile(color: Colors.blue),
             CustomsTile(color: Colors.yellow),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 // ignore: unused_import
 import 'package:switch_theme_app/widgets/text_field.dart';
 
@@ -12,7 +13,6 @@ class InputsView extends StatefulWidget {
 class _InputsViewState extends State<InputsView> {
   bool envioValue = false;
   bool visibleValue = false;
-  double sliderValue = 0;
 
   final textCtrl = TextEditingController();
   final nameCtrl = TextEditingController();
@@ -42,6 +42,7 @@ class _InputsViewState extends State<InputsView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Lottie.asset('assets/Inventory.json', height: 300, width: 300),
             //nombre
             Padding(
               padding: EdgeInsets.all(8.0),
@@ -131,7 +132,7 @@ class _InputsViewState extends State<InputsView> {
                           context,
                         ).colorScheme.inversePrimary,
                         hintText:
-                            'Escritorio, Laptop, Accesorio, Periferico, sMaterial',
+                            'Escritorio, Laptop, Accesorio, Periferico, Material',
                       ),
                     ),
                   ),
@@ -146,7 +147,7 @@ class _InputsViewState extends State<InputsView> {
                         focusColor: Theme.of(
                           context,
                         ).colorScheme.inversePrimary,
-                        hintText: 'Entidad que provee el producto',
+                        hintText: 'Entidad que proveé',
                       ),
                     ),
                   ),
@@ -185,10 +186,10 @@ class _InputsViewState extends State<InputsView> {
                 setState(() => visibleValue = value);
               },
             ),
-            ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
+            /*ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
             FilledButton(onPressed: () {}, child: Text("Filled Button")),
             TextButton(onPressed: () {}, child: Text('Text Button')),
-            //CloseButton(),
+            //CloseButton(),*/
             BackButton(),
           ],
         ),

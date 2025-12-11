@@ -7,7 +7,7 @@ class CustomsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(color.toString()),
+      title: Text('$color'),
       leading: Container(
         height: 50,
         width: 50,
