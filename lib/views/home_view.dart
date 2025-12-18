@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:switch_theme_app/services/theme_service.dart';
 import 'package:switch_theme_app/views/colors_view.dart';
+import 'package:switch_theme_app/views/episodes_view.dart';
 import 'package:switch_theme_app/views/http_view.dart';
 import 'package:switch_theme_app/views/inputs_view.dart';
 
@@ -53,6 +54,14 @@ class HomeView extends StatelessWidget {
                 ).push(MaterialPageRoute(builder: (context) => HttpView()));
               },
               child: Text('Go to http view'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => EpisodesView()));
+              },
+              child: Text('Go to Episodes view'),
             ),
           ],
         ),
